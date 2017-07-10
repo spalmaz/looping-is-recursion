@@ -57,10 +57,11 @@
     (if (empty? s)
       acc
       (let [f (first s)
-            r (set (rest s))]
-        (recur (if (contains? r f)
+            r (rest s)]
+        (recur (if (contains? acc f)
                  (disj acc f)
-                 (conj acc f)) (rest s))))))
+                 (conj acc f))
+             r)))))
 
 
 (defn fast-fibo [n]
